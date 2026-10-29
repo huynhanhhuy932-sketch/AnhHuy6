@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaLearn - Học Java</title>
+    <link rel="stylesheet" href="KT.css">
+</head>
+<body>
+<header>
+    <div class="logo">✦ JavaLearn</div>
+    <nav>
+        <button class="active" onclick="page('home',this)">Trang chủ</button>
+        <button onclick="page('practice',this)">Luyện tập</button>
+        <button onclick="page('test',this)">Thi thử</button>
+        <button onclick="page('profile',this)">Thông tin SV</button>
+        <button onclick="teacherLogin()">Giáo viên</button>
+    </nav>
+</header>
+
+<main>
+<section id="home" class="page active">
+    <div class="hero">
+        <div>
+            <span class="tag">NỀN TẢNG HỌC TẬP JAVA</span>
+            <h1>Học Java dễ dàng.<br><span>Tiến bộ mỗi ngày.</span></h1>
+            <p>Ôn tập lý thuyết, luyện bài tập và kiểm tra kiến thức Java trong một không gian học tập thân thiện.</p>
+            <button class="primary" onclick="page('practice')">Bắt đầu luyện tập →</button>
+            <button class="secondary" onclick="page('test')">Làm bài thi thử</button>
+            <div class="stats">
+                <div><strong>4</strong><small>Chủ đề Java</small></div>
+                <div><strong id="totalQ">12</strong><small>Câu hỏi</small></div>
+                <div><strong id="totalTests">0</strong><small>Bài đã làm</small></div>
+            </div>
+        </div>
+        <div class="code">
+            <span class="green">JavaExample.java</span>
+            <pre><span class="purple">public class</span> Main {
+  <span class="purple">public static void</span> main(String[] args) {
+    String name = <span class="yellow">"Java Learner"</span>;
+    System.out.println(<span class="yellow">"Hello, "</span> + name);
+  }
+}</pre>
+        </div>
+    </div>
+
+    <h2>Chọn chủ đề bạn muốn học</h2>
+    <div class="grid">
+        <article class="card"><span class="number">01</span><h3>Tổng quan Java</h3><p>Khái niệm và đặc điểm của Java.</p><button class="secondary" onclick="page('practice')">Khám phá →</button></article>
+        <article class="card"><span class="number">02</span><h3>Biến và kiểu dữ liệu</h3><p>Làm quen với biến và kiểu dữ liệu.</p><button class="secondary" onclick="page('practice')">Khám phá →</button></article>
+        <article class="card"><span class="number">03</span><h3>Câu lệnh điều kiện</h3><p>Thực hành if, else và switch.</p><button class="secondary" onclick="page('practice')">Khám phá →</button></article>
+        <article class="card"><span class="number">04</span><h3>Vòng lặp</h3><p>Thực hành for, while và do-while.</p><button class="secondary" onclick="page('practice')">Khám phá →</button></article>
+    </div>
+    <div class="card">
+        <h2>Mỗi câu hỏi là một bước tiến.</h2>
+        <p>Học tập chủ động và xem kết quả ngay sau khi nộp bài.</p>
+        <button class="primary" onclick="page('test')">Vào thi thử →</button>
+    </div>
+</section>
+
+<section id="practice" class="page">
+    <h1>Kho bài tập Java</h1>
+    <p>Chọn đáp án phù hợp và kiểm tra lời giải.</p>
+    <input id="search" placeholder="Tìm kiếm câu hỏi..." oninput="renderPractice()">
+    <select id="filter" onchange="renderPractice()">
+        <option value="all">Tất cả chủ đề</option>
+        <option>Tổng quan Java</option>
+        <option>Biến và kiểu dữ liệu</option>
+        <option>Câu lệnh điều kiện</option>
+        <option>Vòng lặp</option>
+    </select>
+    <div id="questions"></div>
+</section>
+
+<section id="test" class="page">
+    <h1>Thi thử Java</h1>
+    <p>Bài thi trắc nghiệm, chấm điểm tự động trên thang 10.</p>
+    <div id="testStart" class="card center">
+        <h2>Bạn đã sẵn sàng?</h2>
+        <p>10 câu hỏi · Chấm điểm tự động</p>
+        <button class="primary" onclick="startTest()">Bắt đầu làm bài →</button>
+    </div>
+    <form id="testForm" class="hidden" onsubmit="submitTest(event)"></form>
+    <div id="testResult"></div>
+</section>
+
+<section id="profile" class="page">
+    <h1>Thông tin sinh viên</h1>
+    <p>Điền thông tin để lưu hồ sơ học tập.</p>
+    <div class="profile-grid">
+        <div class="card center">
+            <div id="avatar" class="avatar">SV</div>
+            <h2 id="displayName">Sinh viên JavaLearn</h2>
+            <p id="displayId">Mã số sinh viên chưa cập nhật</p>
+            <div class="row"><span>Bài thi đã làm</span><b id="profileTests">0</b></div>
+            <div class="row"><span>Điểm trung bình</span><b id="average">0/10</b></div>
+        </div>
+        <form class="card" onsubmit="saveProfile(event)">
+            <label>Họ và tên<input id="name" required></label>
+            <label>Mã số sinh viên<input id="studentId" required></label>
+            <label>Lớp<input id="className"></label>
+            <label>Email<input id="email" type="email"></label>
+            <button class="primary" type="submit">Lưu thông tin</button>
+        </form>
+    </div>
+    <div class="card"><h2>Lịch sử kết quả</h2><div id="history"></div></div>
+</section>
+
+<section id="teacher" class="page">
+    <h1>Quản lý bài tập</h1>
+    <form id="addForm" class="card" onsubmit="addQuestion(event)">
+        <label>Chủ đề<select id="newTopic">
+            <option>Tổng quan Java</option>
+            <option>Biến và kiểu dữ liệu</option>
+            <option>Câu lệnh điều kiện</option>
+            <option>Vòng lặp</option>
+        </select></label>
+        <label>Câu hỏi<textarea id="newQ" required></textarea></label>
+        <label>Đáp án A<input id="a" required></label>
+        <label>Đáp án B<input id="b" required></label>
+        <label>Đáp án C<input id="c" required></label>
+        <label>Đáp án D<input id="d" required></label>
+        <label>Đáp án đúng<select id="correct">
+            <option value="0">A</option><option value="1">B</option>
+            <option value="2">C</option><option value="3">D</option>
+        </select></label>
+        <label>Lời giải<textarea id="explain"></textarea></label>
+        <button class="primary" type="submit">Thêm câu hỏi</button>
+    </form>
+    <div class="card"><h2>Danh sách câu hỏi</h2><div id="teacherList"></div></div>
+</section>
+</main>
+
+<footer>JavaLearn · Website hỗ trợ học tập môn Lập trình Java</footer>
+<script src="KT.js"></script>
+</body>
+</html>

@@ -1,0 +1,300 @@
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --green: #087f68;
+    --light: #e8f7f2;
+    --dark: #172033;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f8f7;
+    color: var(--dark);
+}
+
+header {
+    background: white;
+    padding: 18px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    box-shadow: 0 3px 12px #00000010;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--green);
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+button {
+    border: 0;
+    border-radius: 8px;
+    padding: 11px 16px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+nav button {
+    background: white;
+    color: #53616b;
+}
+
+nav button:hover,
+nav button.active {
+    background: var(--light);
+    color: var(--green);
+}
+
+.primary {
+    background: var(--green);
+    color: white;
+}
+
+.secondary {
+    background: white;
+    border: 1px solid #cbded7;
+    color: var(--green);
+}
+
+main {
+    max-width: 1150px;
+    margin: auto;
+    padding: 30px 20px 60px;
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: center;
+    background: linear-gradient(120deg, #effaf5, #dff3eb);
+    padding: 40px;
+    border-radius: 22px;
+    margin-bottom: 35px;
+}
+
+h1 {
+    font-size: 38px;
+    line-height: 1.2;
+}
+
+h1 span {
+    color: var(--green);
+}
+
+p {
+    color: #687485;
+    line-height: 1.7;
+}
+
+.green {
+    color: #8de1bc;
+}
+
+.purple {
+    color: #c6a6ff;
+}
+
+.yellow {
+    color: #f4d58d;
+}
+
+.code {
+    background: #172333;
+    color: white;
+    border-radius: 15px;
+    padding: 25px;
+    overflow: auto;
+}
+
+.code pre {
+    white-space: pre-wrap;
+    line-height: 1.8;
+}
+
+.stats {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.stats strong {
+    display: block;
+    font-size: 24px;
+}
+
+.stats small {
+    color: #687485;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.card,
+.question,
+.test-question {
+    background: white;
+    border: 1px solid #e3ebe7;
+    border-radius: 14px;
+    padding: 22px;
+    margin: 15px 0;
+}
+
+.number {
+    display: inline-block;
+    padding: 12px;
+    background: var(--light);
+    color: var(--green);
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+input,
+select,
+textarea {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0 15px;
+    border: 1px solid #dce4e1;
+    border-radius: 8px;
+    font: inherit;
+}
+
+label {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    border: 1px solid #e1e9e5;
+    border-radius: 8px;
+    margin: 8px 0;
+    cursor: pointer;
+    font-weight: normal;
+}
+
+.option input {
+    width: auto;
+    margin: 0;
+}
+
+.explain {
+    display: none;
+    background: var(--light);
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 12px;
+    line-height: 1.6;
+}
+
+.explain.show {
+    display: block;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.center {
+    text-align: center;
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 20px;
+}
+
+.avatar {
+    width: 75px;
+    height: 75px;
+    border-radius: 22px;
+    background: var(--light);
+    color: var(--green);
+    display: grid;
+    place-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin: auto;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #e5ebe8;
+}
+
+.result {
+    text-align: center;
+    padding: 25px;
+    background: var(--light);
+    border-radius: 14px;
+}
+
+.result strong {
+    font-size: 40px;
+    color: var(--green);
+}
+
+footer {
+    text-align: center;
+    background: white;
+    padding: 25px;
+    color: #687485;
+}
+
+@media (max-width: 800px) {
+    .hero,
+    .profile-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        padding: 22px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+}
